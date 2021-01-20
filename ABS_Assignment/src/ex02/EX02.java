@@ -15,19 +15,15 @@ public class EX02 {
 			inputSentence = input.nextLine();
 			
 			if(inputSentence.equals("END")) {
-				System.out.print("프로그램 종료");
 				break;
 			}
 			
 			if(inputSentence.length()>200) {
 				System.out.println("문장의 길이가 너무 깁니다!");
 			} else {
+				inputSentence = inputSentence.replaceAll("\\p{Punct}", "").replaceAll(" +", " ").trim();
+				
 				String[] tempSentence = inputSentence.split(" ");
-				
-				for(int j = 0; j < tempSentence.length; j++) {
-					tempSentence[j] = tempSentence[j].replaceAll("\\p{Punct}", "").trim();
-				}
-				
 				Map<String, Integer> resultSentence = new TreeMap<>();
 				
 				for(int j = 0; j < tempSentence.length; j++) {
@@ -38,7 +34,6 @@ public class EX02 {
 						resultSentence.put(tempSentence[j], countSentence + 1);
 					}
 				}
-				resultSentence.remove("");
 				
 				for(String key: resultSentence.keySet()) {
 					System.out.println(key + ": " + resultSentence.get(key));
@@ -46,6 +41,7 @@ public class EX02 {
 				System.out.println();
 			}
 		}
+		System.out.print("프로그램 종료");
 		
 		input.close();
 
