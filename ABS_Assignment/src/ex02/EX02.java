@@ -1,47 +1,53 @@
 package ex02;
 
-import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.TreeMap;
 
 public class EX02 {
 	public static void main(String[] args) {
 		
-		Scanner sc = new Scanner(System.in);
-		String data = null;
+		Scanner input = new Scanner(System.in);
+		String inputSentence = null;
 		
-		while(true) {
-			System.out.print("¹®Àå ÀÔ·Â: ");
-			data = sc.nextLine();
+		for(int i = 0; i < 30; i++) {
+			System.out.print("ë¬¸ì¥ ì…ë ¥: ");
+			inputSentence = input.nextLine();
 			
-			if(data.equals("END")) {
-				System.out.print("ÇÁ·Î±×·¥ Á¾·á");
-				break;
-			}
-			if(data.length()>200) {
-				System.out.print("¹®ÀåÀÇ ±æÀÌ°¡ ³Ê¹« ±é´Ï´Ù!");
+			if(inputSentence.equals("END")) {
+				System.out.print("í”„ë¡œê·¸ë¨ ì¢…ë£Œ");
 				break;
 			}
 			
-			String[] result = data.split(" ", 30);
-			
-			HashMap<String, Integer> map = new HashMap<String, Integer>();
-			
-			for(int i = 0; i < result.length; i++) {
-				Integer count = map.get(result[i]);
-				if (count == null) {
-					map.put(result[i], 1);
-				} else {
-					map.put(result[i], count + 1);
+			if(inputSentence.length()>200) {
+				System.out.println("ë¬¸ì¥ì˜ ê¸¸ì´ê°€ ë„ˆë¬´ ê¹ë‹ˆë‹¤!");
+			} else {
+				String[] tempSentence = inputSentence.split(" ");
+				
+				for(int j = 0; j < tempSentence.length; j++) {
+					tempSentence[j] = tempSentence[j].replaceAll("\\p{Punct}", "").trim();
 				}
+				
+				Map<String, Integer> resultSentence = new TreeMap<>();
+				
+				for(int j = 0; j < tempSentence.length; j++) {
+					Integer countSentence = resultSentence.get(tempSentence[j]);
+					if (countSentence == null) {
+						resultSentence.put(tempSentence[j], 1);
+					} else {
+						resultSentence.put(tempSentence[j], countSentence + 1);
+					}
+				}
+				resultSentence.remove("");
+				
+				for(String key: resultSentence.keySet()) {
+					System.out.println(key + ": " + resultSentence.get(key));
+				}
+				System.out.println();
 			}
-			
-			for(String key: map.keySet()) {
-				System.out.println(key + ": " + map.get(key));
-			}
-			System.out.println();
 		}
 		
-		sc.close();
+		input.close();
 
 	}
 }
