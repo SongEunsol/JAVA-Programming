@@ -8,11 +8,10 @@ public class EX02 {
 	public static void main(String[] args) {
 		
 		Scanner input = new Scanner(System.in);
-		String inputSentence = null;
 		
 		for(int i = 0; i < 30; i++) {
 			System.out.print("문장 입력: ");
-			inputSentence = input.nextLine();
+			String inputSentence = input.nextLine();
 			
 			if(inputSentence.equals("END")) {
 				break;
@@ -26,12 +25,12 @@ public class EX02 {
 				String[] tempSentence = inputSentence.split(" ");
 				Map<String, Integer> resultSentence = new TreeMap<>();
 				
-				for(int j = 0; j < tempSentence.length; j++) {
-					Integer countSentence = resultSentence.get(tempSentence[j]);
+				for(String j: tempSentence) {
+					Integer countSentence = resultSentence.get(j);
 					if (countSentence == null) {
-						resultSentence.put(tempSentence[j], 1);
+						resultSentence.put(j, 1);
 					} else {
-						resultSentence.put(tempSentence[j], countSentence + 1);
+						resultSentence.put(j, countSentence + 1);
 					}
 				}
 				

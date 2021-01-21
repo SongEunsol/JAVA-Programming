@@ -6,10 +6,9 @@ public class EX01 {
 	public static void main(String[] args) {
 		
 		Scanner input = new Scanner(System.in);
-		int decimal;
 
 		System.out.print("10진수 입력: ");
-		decimal = input.nextInt();
+		int decimal = input.nextInt();
 		
 		String toBinary = Integer.toBinaryString(decimal);
 		

@@ -17,10 +17,9 @@ public class EX03 {
 	public static void main(String[] args) {
 		
 		Scanner input = new Scanner(System.in);
-		int positiveNum;
 		
 		System.out.print("양의 정수 입력: ");
-		positiveNum = input.nextInt();
+		int positiveNum = input.nextInt();
 		
 		if(positiveNum>=1 && positiveNum<=15) {
 			System.out.println(toFactorial(positiveNum));
