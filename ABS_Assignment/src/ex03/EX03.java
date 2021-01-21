@@ -4,31 +4,30 @@ import java.util.Scanner;
 
 public class EX03 {
 	
-	public static long fact(int n) {
-		if(n == 1) {
-			System.out.println(n + "! = " + 1);
-			return n;
+	public static long toFactorial(int positiveNum) {
+		if(positiveNum == 1) {
+			System.out.println(positiveNum + "! = " + 1);
+			return positiveNum;
 		} else {
-			System.out.println(n + "! = " + n + " * " + (n - 1) + "!");
-			return n * fact(n - 1);
+			System.out.println(positiveNum + "! = " + positiveNum + " * " + (positiveNum - 1) + "!");
+			return positiveNum * toFactorial(positiveNum - 1);
 		}
 	}
 	
 	public static void main(String[] args) {
 		
-		Scanner sc = new Scanner(System.in);
-		int n;
+		Scanner input = new Scanner(System.in);
 		
-		System.out.print("¾çÀÇ Á¤¼ö ÀÔ·Â: ");
-		n = sc.nextInt();
+		System.out.print("ì–‘ì˜ ì •ìˆ˜ ìž…ë ¥: ");
+		int positiveNum = input.nextInt();
 		
-		if(n>=1 && n<=15) {
-			System.out.println(fact(n));
+		if(positiveNum>=1 && positiveNum<=15) {
+			System.out.println(toFactorial(positiveNum));
 		} else {
-			System.out.println("1 ÀÌ»ó 15 ÀÌÇÏÀÇ ¼ö¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+			System.out.println("1 ì´ìƒ 15 ì´í•˜ì˜ ìˆ˜ë¥¼ ìž…ë ¥í•´ì£¼ì„¸ìš”.");
 		}
 
-		sc.close();
+		input.close();
 		
 	}
 

@@ -5,18 +5,16 @@ import java.util.Scanner;
 public class EX01 {
 	public static void main(String[] args) {
 		
-		Scanner sc = new Scanner(System.in);
-		int i;
+		Scanner input = new Scanner(System.in);
 
-		System.out.print("10Áø¼ö ÀÔ·Â: ");
-		i = sc.nextInt();
+		System.out.print("10ì§„ìˆ˜ ìž…ë ¥: ");
+		int decimal = input.nextInt();
 		
-		String binary = Integer.toBinaryString(i);
+		String toBinary = Integer.toBinaryString(decimal);
 		
+		System.out.println("2ì§„ìˆ˜ ë³€í™˜ ê²°ê³¼: " + toBinary);
 		
-		System.out.println("2Áø¼ö Ãâ·Â: " + binary);
-		
-		sc.close();
+		input.close();
 		
 	}
 

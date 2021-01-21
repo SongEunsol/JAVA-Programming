@@ -1,47 +1,48 @@
 package ex02;
 
-import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.TreeMap;
 
 public class EX02 {
 	public static void main(String[] args) {
 		
-		Scanner sc = new Scanner(System.in);
-		String data = null;
+		Scanner input = new Scanner(System.in);
 		
-		while(true) {
-			System.out.print("¹®Àå ÀÔ·Â: ");
-			data = sc.nextLine();
+		for(int i = 0; i < 30; i++) {
+			System.out.print("ë¬¸ì¥ ì…ë ¥: ");
+			String inputSentence = input.nextLine();
 			
-			if(data.equals("END")) {
-				System.out.print("ÇÁ·Î±×·¥ Á¾·á");
-				break;
-			}
-			if(data.length()>200) {
-				System.out.print("¹®ÀåÀÇ ±æÀÌ°¡ ³Ê¹« ±é´Ï´Ù!");
+			if(inputSentence.equals("END")) {
 				break;
 			}
 			
-			String[] result = data.split(" ", 30);
-			
-			HashMap<String, Integer> map = new HashMap<String, Integer>();
-			
-			for(int i = 0; i < result.length; i++) {
-				Integer count = map.get(result[i]);
-				if (count == null) {
-					map.put(result[i], 1);
-				} else {
-					map.put(result[i], count + 1);
+			if(inputSentence.length()>200) {
+				System.out.println("ë¬¸ì¥ì˜ ê¸¸ì´ê°€ ë„ˆë¬´ ê¹ë‹ˆë‹¤!");
+			} else {
+				inputSentence = inputSentence.replaceAll("\\p{Punct}", "").replaceAll(" +", " ").trim();
+				
+				String[] tempSentence = inputSentence.split(" ");
+				Map<String, Integer> resultSentence = new TreeMap<>();
+				
+				for(String j: tempSentence) {
+					Integer countSentence = resultSentence.get(j);
+					if (countSentence == null) {
+						resultSentence.put(j, 1);
+					} else {
+						resultSentence.put(j, countSentence + 1);
+					}
 				}
+				
+				for(String key: resultSentence.keySet()) {
+					System.out.println(key + ": " + resultSentence.get(key));
+				}
+				System.out.println();
 			}
-			
-			for(String key: map.keySet()) {
-				System.out.println(key + ": " + map.get(key));
-			}
-			System.out.println();
 		}
+		System.out.print("í”„ë¡œê·¸ë¨ ì¢…ë£Œ");
 		
-		sc.close();
+		input.close();
 
 	}
 }
